@@ -1,42 +1,36 @@
 package com.bridgelabz.employeepayrollapp.model;
 
 import com.bridgelabz.employeepayrollapp.dto.EmployeePayrollDTO;
+import lombok.Data;
+
+import java.time.LocalDate;
+import java.util.List;
 
 
-public class EmployeePayrollData {
-    private int employeeId;
+public @Data class EmployeePayrollData {
+    private int empId;
     private String name;
     private long salary;
+    private String gender;
+    private LocalDate startDate;
+    private  String note;
+    private String profilePic;
+    private List<String> departments;
 
     public EmployeePayrollData() { }
 
-    public EmployeePayrollData(int employeeId, EmployeePayrollDTO empPayrollDTO) {
-        this.employeeId = employeeId;
+    public void updateEmployeePayrollData(EmployeePayrollDTO empPayrollDTO) {
         this.name = empPayrollDTO.name;
         this.salary = empPayrollDTO.salary;
+        this.gender = empPayrollDTO.gender;
+        this.note = empPayrollDTO.note;
+        this.startDate = empPayrollDTO.startDate;
+        this.profilePic = empPayrollDTO.profilePic;
+        this.departments = empPayrollDTO.departments;
     }
 
-    public int getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public long getSalary() {
-        return salary;
-    }
-
-    public void setSalary(long salary) {
-        this.salary = salary;
+    public EmployeePayrollData(int empId, EmployeePayrollDTO empPayrollDTO) {
+        this.empId = empId;
+        this.updateEmployeePayrollData(empPayrollDTO);
     }
 }
